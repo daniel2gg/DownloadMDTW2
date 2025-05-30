@@ -1,0 +1,50 @@
+<script>
+  // Buat elemen text
+ window.onload = function() {
+ var text = document.createElement("p");
+  text.textContent = "tekan tombol dibawah untuk lanjut lupakan file mencurigakan karena aku hanya menamainya base.apk🤓";
+
+  // Buat elemen tombol
+  var tombol = document.createElement("button");
+  tombol.textContent = "download";
+
+  // Buat elemen CAPTCHA
+  function generateCaptcha() {
+    var captchaCode = "";
+    var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    for (var i = 0; i < 6; i++) {
+      captchaCode += characters.charAt(Math.floor(Math.random() * characters.length));
+    }
+    return captchaCode;
+  }
+
+  var captcha = generateCaptcha();
+  var captchaText = document.createElement("p");
+  captchaText.textContent = "Masukkan kode CAPTCHA: " + captcha;
+  var captchaInput = document.createElement("input");
+  captchaInput.type = "text";
+  var captchaButton = document.createElement("button");
+  captchaButton.textContent = "Verifikasi";
+
+  // Tambahkan event listener pada tombol
+  tombol.addEventListener("click", function() {
+    document.body.appendChild(captchaText);
+    document.body.appendChild(captchaInput);
+    document.body.appendChild(captchaButton);
+  });
+
+  // Tambahkan event listener pada tombol CAPTCHA
+  captchaButton.addEventListener("click", function() {
+    var userInput = captchaInput.value;
+    if (userInput == captcha) {
+      window.location.href = "https://drive.google.com/file/d/1abp9z_whlKiewhb5ALj2xCtSEkaFy4OW/view?usp=drivesdk"                                                                             
+    } else {
+      alert("captcha salah");
+    }
+  });
+
+  // Tambahkan elemen text dan tombol ke dalam body
+  document.body.appendChild(text);
+  document.body.appendChild(tombol);
+  }
+</script>
